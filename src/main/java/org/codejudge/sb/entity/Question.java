@@ -8,6 +8,8 @@ import org.codejudge.sb.constants.JPADataTypeConstants;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -31,7 +33,7 @@ public class Question extends BaseEntity {
     @Column(name = "QUIZ_ID", columnDefinition = JPADataTypeConstants.ID)
     private Long quizID;
 
-    /*@ManyToMany
-    @JoinColumn(name = "QUIZ_ID",referencedColumnName = "ID")
-    private Quiz quiz;*/
+    @ManyToOne
+    @JoinColumn(name = "QUIZ_ID", referencedColumnName = "ID", insertable = false, updatable = false)
+    private Quiz quiz;
 }
